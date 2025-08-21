@@ -4,16 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>atividade_bootstrap</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <main class="container my-4"><!--my significa margin vertical (em cima e embaixo)-->
-        <h1 class="text-center">Lista de Exercícios - Bootstrap</h1>
+    <div class="container my-4">
+        <!--my significa margin vertical (em cima e embaixo)-->
         <!-- Formulário 1 -->
         <h5 class="mt-4">Formulário 1</h5> <!-- mt = margem no topo , mb = margem embaixo-->
-        <div class="border p-3 rounded mb-4"><!--p = padding (margem interna / espaçamento dentro)-->
+        <div class="border p-3 rounded mb-4">
+            <!--p = padding (margem interna / espaçamento dentro)-->
             <form>
                 <div class="row g-3">
                     <div class="col">
@@ -50,7 +51,8 @@
                 </div>
 
                 <div class="form-check mt-3">
-                    <input class="form-check-input" type="checkbox" id="terms"><!--para ter o checkbox-->
+                    <input class="form-check-input" type="checkbox" id="terms">
+                    <!--para ter o checkbox-->
                     <label class="form-check-label" for="terms">Agree to terms and conditions</label>
                 </div>
                 <div class="mt-3">
@@ -241,7 +243,8 @@
                     </div>
                     <div class="col-3">
                         <label for="senha" class="form-label">Senha:</label>
-                        <input type="password" name="Senha" id="Senha" placeholder="Informe a Senha" class="form-control">
+                        <input type="password" name="Senha" id="Senha" placeholder="Informe a Senha"
+                            class="form-control">
                     </div>
                     <div class="col">
                         <label for="status" class="form-label">Status:</label>
@@ -327,8 +330,11 @@
                 </div>
             </form>
         </div>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+    </script>
+    </div>
 </body>
 
 </html>
