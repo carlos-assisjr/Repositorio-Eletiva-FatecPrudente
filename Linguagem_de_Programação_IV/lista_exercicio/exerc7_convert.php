@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
@@ -12,7 +12,7 @@
     <div class="container">
         <?php
         $temperatura = $_POST['temperatura'];
-        $conversao = ($temperatura - 32) * (5/9);
+        $conversao = ($temperatura - 32) * (5 / 9);
         echo "<p> A temperatura em Graus Celsius é: $conversao <p>"
         ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
