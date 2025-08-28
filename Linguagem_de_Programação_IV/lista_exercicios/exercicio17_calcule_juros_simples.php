@@ -13,15 +13,15 @@
         <h1>Calcule juros simples</h1>
         <form method="post" action="exerc17_calcule_juros_simples.php">
             <div class="mb-3">
-                <label for="capital" class="form-label">capital</label>
+                <label for="capital" class="form-label">Digite o capital:</label>
                 <input type="number" id="capital" name="capital" class="form-control" required="">
             </div>
             <div class="mb-3">
-                <label for="taxa" class="form-label">taxa</label>
+                <label for="taxa" class="form-label">Digite a taxa anual:</label>
                 <input type="text" id="taxa" name="taxa" class="form-control" required="">
             </div>
             <div class="mb-3">
-                <label for="periodo" class="form-label">período</label>
+                <label for="periodo" class="form-label">Digite o período anual:</label>
                 <input type="text" id="periodo" name="periodo" class="form-control" required="">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>

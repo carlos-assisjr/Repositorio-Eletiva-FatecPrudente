@@ -13,11 +13,11 @@
         <h1>Calcule com o desconto</h1>
         <form method="post" action="exerc16_calcule_desconto.php">
             <div class="mb-3">
-                <label for="preco" class="form-label">preço</label>
+                <label for="preco" class="form-label">Infome o preço:</label>
                 <input type="number" id="preco" name="preco" class="form-control" required="">
             </div>
             <div class="mb-3">
-                <label for="desconto" class="form-label">desconto em porcentagem</label>
+                <label for="desconto" class="form-label">Digite o percentual do Desconto:</label>
                 <input type="text" id="desconto" name="desconto" class="form-control" required="">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>

@@ -13,8 +13,8 @@
         <h1>conversão de quilômetros para milhas</h1>
         <form method="post" action="exerc14_conver_km_milhas.php">
             <div class="mb-3">
-                <label for="quilometro" class="form-label">quilometro </label>
-                <input type="number" id="quilometro" name="quilometro" class="form-control" required="">
+                <label for="quilometro" class="form-label">Informe a quilometragem: </label>
+                <input type="number" step="0.01" id="quilometro" name="quilometro" class="form-control" required="">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>

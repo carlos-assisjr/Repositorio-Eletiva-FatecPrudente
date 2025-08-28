@@ -13,12 +13,12 @@
         <h1>Calcule o IMC</h1>
         <form method="post" action="exerc15_calcule_IMC.php">
             <div class="mb-3">
-                <label for="peso" class="form-label">peso</label>
-                <input type="number" id="peso" name="peso" class="form-control" required="">
+                <label for="peso" class="form-label"> Informe o peso:</label>
+                <input type="number" step="0.01" id="peso" name="peso" class="form-control" required="">
             </div>
             <div class="mb-3">
-                <label for="altura" class="form-label">altura</label>
-                <input type="number" id="altura" name="altura" class="form-control">
+                <label for="altura" class="form-label">informe altura:</label>
+                <input type="number" step="0.01" id="altura" name="altura" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>

@@ -13,7 +13,7 @@
         <h1>Conversão de dias para horas, minutos e segundos</h1>
         <form method="post" action="exerc19_dias_horas.php">
             <div class="mb-3">
-                <label for="dia" class="form-label">Quantidade de dias</label>
+                <label for="dia" class="form-label">Quantidade de dias:</label>
                 <input type="number" id="dia" name="dia" class="form-control" required="">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>

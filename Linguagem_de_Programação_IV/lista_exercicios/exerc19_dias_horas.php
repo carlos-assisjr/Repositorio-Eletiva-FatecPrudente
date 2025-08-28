@@ -15,7 +15,7 @@
         $horas = $dia * 24;
         $minutos = $horas * 60;
         $segundos = $minutos * 60;
-        echo "<p> O resultado da conversão é: <p>";
+        echo "<p> A quantidade de $dia dias é equivalente a: <p>";
         echo "<p>$horas horas<p>";
         echo "<p>$minutos minutos<p>";
         echo "<p>$segundos segundos<p>";
