@@ -11,7 +11,7 @@
 <body>
     <div class="container py-3">
         <h1>Calcule juros simples</h1>
-        <form method="post" action="exerc17_calcule_juros_simples.php">
+        <form method="post">
             <div class="mb-3">
                 <label for="capital" class="form-label">Digite o capital:</label>
                 <input type="number" id="capital" name="capital" class="form-control" required="">
@@ -26,6 +26,16 @@
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $capital = $_POST['capital'];
+            $taxa = $_POST['taxa'] / 100;
+            $periodo = $_POST['periodo'];
+            $juros = $capital * $taxa * $periodo;
+            echo "<p> O valor do Juros Simples é: $juros</p>";
+        }
+        ?>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     </div>
 </body>

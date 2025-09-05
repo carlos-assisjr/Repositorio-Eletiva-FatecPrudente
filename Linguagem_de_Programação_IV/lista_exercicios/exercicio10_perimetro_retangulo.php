@@ -11,7 +11,7 @@
 <body>
   <div class="container">
     <h1>Calcule o perímetro do retângulo</h1>
-    <form method="post" action="exerc10_perimetro_retangulo.php">
+    <form method="post">
       <div class="mb-3">
         <label for="altura" class="form-label">Digite a altura:</label>
         <input type="number" id="altura" name="altura" class="form-control" required="">
@@ -22,6 +22,16 @@
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $altura = $_POST['altura'];
+      $largura = $_POST['largura'];
+      $perimetro = ($altura * 2) + ($largura * 2);
+      echo "<p>o perímetro do retângulo é: $perimetro</p>";
+    }
+    ?>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
   </div>
 </body>

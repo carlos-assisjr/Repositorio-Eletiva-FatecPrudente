@@ -11,13 +11,22 @@
 <body>
     <div class="container">
         <h1>Calcule o perímetro do circulo</h1>
-        <form method="post" action="exerc11_perimetro_circulo.php">
+        <form method="post">
             <div class="mb-3">
                 <label for="raio" class="form-label">Digite o raio do circulo:</label>
                 <input type="number" id="raio" name="raio" class="form-control" required="">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $pi = 3.14;
+            $raio = $_POST['raio'];
+            $perimetro = ($pi * 2) * $raio;
+            echo "<p> O perímetro do circulo é:$perimetro</p>";
+        }
+        ?>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     </div>
 </body>

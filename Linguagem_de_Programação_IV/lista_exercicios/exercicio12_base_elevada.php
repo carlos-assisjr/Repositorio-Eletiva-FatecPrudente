@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <h1>Calcule a base elevada ao expoente:</h1>
-        <form method="post" action="exerc12_base_elevada.php">
+        <form method="post">
             <div class="mb-3">
                 <label for="base" class="form-label">Digite o valor da base:</label>
                 <input type="number" id="base" name="base" class="form-control" required="">
@@ -22,6 +22,15 @@
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $base = $_POST['base'];
+            $expoente = $_POST['expoente'];
+            $elevado = $base ** $expoente;
+            echo "<p> O valor da base elevada é: $elevado</p>";
+        }
+        ?>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     </div>
 </body>

@@ -11,7 +11,7 @@
 <body>
     <div class="container py-3">
         <h1>Calcule com o desconto</h1>
-        <form method="post" action="exerc16_calcule_desconto.php">
+        <form method="post">
             <div class="mb-3">
                 <label for="preco" class="form-label">Infome o preço:</label>
                 <input type="number" id="preco" name="preco" class="form-control" required="">
@@ -22,6 +22,17 @@
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $preco = $_POST['preco'];
+            $desconto = $_POST['desconto'] / 100;
+            $novo_preco = $preco - ($preco * $desconto);
+
+            echo "<p> O preço após o desconto: $novo_preco </p>";
+        }
+        ?>
+
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     </div>
 </body>

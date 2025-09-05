@@ -11,13 +11,21 @@
 <body>
     <div class="container">
         <h1>Conversão de metros para centimetro:</h1>
-        <form method="post" action="exerc13_conversao_cent.php">
+        <form method="post">
             <div class="mb-3">
                 <label for="metro" class="form-label">Digite o valor em metro:</label>
                 <input type="number" id="metro" name="metro" class="form-control" required="">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $metro = $_POST['metro'];
+            $converte = $metro * 100;
+            echo "<p> O valor de metro em centímetro é: $converte</p>";
+        }
+        ?>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     </div>
 </body>
