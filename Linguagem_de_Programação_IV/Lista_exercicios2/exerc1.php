@@ -44,23 +44,51 @@
         </form>
 
         <?php
-             if ($_SERVER['REQUEST_METHOD']=='POST'){
-                $valor1 = $_POST['valor1'];
-                $valor2 = $_POST['valor2'];
-                $valor3 = $_POST['valor3'];
-                $valor4 = $_POST['valor4'];
-                $valor5 = $_POST['valor5'];
-                $valor6 = $_POST['valor6'];
-                $valor7 = $_POST['valor7'];
-                
-                $menor = $valor1;
-                $posicao = 1;
-                if($valor2 <  $menor){
-                    $menor = $valor2;
-                    $posicao  = 2;
-                }
-                echo "<p> ) menor numero informado é $valor e está na posiçao $posicao";
-             }
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $valor1 = $_POST['valor1'];
+            $valor2 = $_POST['valor2'];
+            $valor3 = $_POST['valor3'];
+            $valor4 = $_POST['valor4'];
+            $valor5 = $_POST['valor5'];
+            $valor6 = $_POST['valor6'];
+            $valor7 = $_POST['valor7'];
+
+            $menor = $valor1;
+            $posicao = 1;
+
+            if ($valor2 < $menor) {
+                $menor = $valor2;
+                $posicao = 2;
+            }
+
+            if ($valor3 < $menor) {
+                $menor = $valor3;
+                $posicao = 3;
+            }
+
+            if ($valor4 < $menor) {
+                $menor = $valor4;
+                $posicao = 4;
+            }
+
+            if ($valor5 < $menor) {
+                $menor = $valor5;
+                $posicao = 5;
+            }
+
+            if ($valor6 < $menor) {
+                $menor = $valor6;
+                $posicao = 6;
+            }
+
+            if ($valor7 < $menor) {
+                $menor = $valor7;
+                $posicao = 7;
+            }
+
+            echo "<p> O menor valor informado é: $menor e está na posição $posicao";
+        }
+        ?>
         ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     </div>
