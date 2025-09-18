@@ -2,7 +2,6 @@
     // > < >= <= != == ===
     // && - e ||- ou !-  não
     include("cabecalho.php");
-
     $valor = "20";
     if (($valor > 20) && ($valor <= 30)) {
         echo "valor maior que 20";
