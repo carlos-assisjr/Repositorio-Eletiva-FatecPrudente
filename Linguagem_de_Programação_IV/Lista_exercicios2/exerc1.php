@@ -1,49 +1,53 @@
     <?php
     include("cabecalho.php");
-    $valor1 = $_POST['valor1'];
-    $valor2 = $_POST['valor2'];
-    $valor3 = $_POST['valor3'];
-    $valor4 = $_POST['valor4'];
-    $valor5 = $_POST['valor5'];
-    $valor6 = $_POST['valor6'];
-    $valor7 = $_POST['valor7'];
 
-    $menor = $valor1;
-    $posicao = 1;
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $valor1 = $_POST['valor1'];
+        $valor2 = $_POST['valor2'];
+        $valor3 = $_POST['valor3'];
+        $valor4 = $_POST['valor4'];
+        $valor5 = $_POST['valor5'];
+        $valor6 = $_POST['valor6'];
+        $valor7 = $_POST['valor7'];
 
-    if ($valor2 < $menor) {
-        $menor = $valor2;
-        $posicao = 2;
+        $menor = $valor1;
+        $posicao = 1;
+
+        if ($valor2 < $menor) {
+            $menor = $valor2;
+            $posicao = 2;
+        }
+
+        if ($valor3 < $menor) {
+            $menor = $valor3;
+            $posicao = 3;
+        }
+
+        if ($valor4 < $menor) {
+            $menor = $valor4;
+            $posicao = 4;
+        }
+
+        if ($valor5 < $menor) {
+            $menor = $valor5;
+            $posicao = 5;
+        }
+
+        if ($valor6 < $menor) {
+            $menor = $valor6;
+            $posicao = 6;
+        }
+
+        if ($valor7 < $menor) {
+            $menor = $valor7;
+            $posicao = 7;
+        }
+
+        echo "<p> O menor valor informado é: $menor e está na posição $posicao";
     }
-
-    if ($valor3 < $menor) {
-        $menor = $valor3;
-        $posicao = 3;
-    }
-
-    if ($valor4 < $menor) {
-        $menor = $valor4;
-        $posicao = 4;
-    }
-
-    if ($valor5 < $menor) {
-        $menor = $valor5;
-        $posicao = 5;
-    }
-
-    if ($valor6 < $menor) {
-        $menor = $valor6;
-        $posicao = 6;
-    }
-
-    if ($valor7 < $menor) {
-        $menor = $valor7;
-        $posicao = 7;
-    }
-
-    echo "<p> O menor valor informado é: $menor e está na posição $posicao";
-
     ?>
+    
+    <h1 style="text-align: center;">Exercício Menor Numero</h1>
     <form method="post">
         <div class="mb-3">
             <label for="valor1" class="form-label">informe o valor 1:</label>
@@ -75,6 +79,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
+
     <?php
-    include("cabecalho.php");
+    include("rodape.php");
     ?>
