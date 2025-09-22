@@ -33,10 +33,6 @@
                             <li><a class="dropdown-item" href="exerc4.php">exerc4</a></li>
                             <li><a class="dropdown-item" href="exerc5.php">exerc5</a></li>
                             <li><a class="dropdown-item" href="exerc6.php">exerc6</a></li>
-                            <li><a class="dropdown-item" href="exerc7.php">exerc7</a></li>
-                            <li><a class="dropdown-item" href="exerc8.php">exerc8</a></li>
-                            <li><a class="dropdown-item" href="exerc9.php">exerc9</a></li>
-                            <li><a class="dropdown-item" href="exerc10.php">exerc10</a></li>
                         </ul>
                     </li>
                 </ul>
