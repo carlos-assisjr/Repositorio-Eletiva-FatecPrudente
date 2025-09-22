@@ -1,11 +1,5 @@
 <?php
 include("cabecalho.php");
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $numero = $_POST['numero'];
-    for($i= 1;$i <= $numero; $i++) {
-        echo"<p>{$i}</p>";
-    }
-}
 ?>
 <form method="post">
     <div class="mb-3">
@@ -14,7 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
-
 <?php
-include("rodape.php");
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $numero = $_POST['numero'];
+    for ($i = 1; $i <= $numero; $i++) {
+        echo "<p>{$i}</p>";
+    }
+    include("rodape.php");
+}
 ?>

@@ -1,15 +1,5 @@
 <?php
 include("cabecalho.php");
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $numero = $_POST['numero'];
-    $fatorial = $numero;
-    for ($i = $numero - 1; $i > 1; $i--) {
-        $fatorial = $fatorial * $i;
-        // fatorial*- $i;
-    }
-    echo "o fatorial de $numero é $fatorial";
-}
-
 ?>
 <form method="post">
     <div class="mb-3">
@@ -19,5 +9,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 <?php
-include("rodape.php");
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $numero = $_POST['numero'];
+    $fatorial = $numero;
+    for ($i = $numero - 1; $i > 1; $i--) {
+        $fatorial = $fatorial * $i;
+        // fatorial*- $i;
+    }
+    echo "o fatorial de $numero é $fatorial";
+    include("rodape.php");
+}
+
 ?>

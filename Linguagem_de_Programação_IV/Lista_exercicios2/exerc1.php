@@ -1,6 +1,40 @@
     <?php
     include("cabecalho.php");
+    ?>
+    <h1 style="text-align: center;">Exercício Menor Numero</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label for="valor1" class="form-label">informe o valor 1:</label>
+            <input type="text" id="valor1" name="valor1" class="form-control" required="">
+        </div>
+        <div class="mb-3">
+            <label for="valor2" class="form-label">informe o valor 2:</label>
+            <input type="text" id="valor2" name="valor2" class="form-control" required="">
+        </div>
+        <div class="mb-3">
+            <label for="valor3" class="form-label">informe o valor 3:</label>
+            <input type="text" id="valor3" name="valor3" class="form-control" required="">
+        </div>
+        <div class="mb-3">
+            <label for="valor4" class="form-label">informe o valor 4:</label>
+            <input type="text" id="valor4" name="valor4" class="form-control" required="">
+        </div>
+        <div class="mb-3">
+            <label for="valor5" class="form-label">informe o valor 5:</label>
+            <input type="text" id="valor5" name="valor5" class="form-control" required="">
+        </div>
+        <div class="mb-3">
+            <label for="valor6" class="form-label">informe o valor 6:</label>
+            <input type="text" id="valor6" name="valor6" class="form-control" required="">
+        </div>
+        <div class="mb-3">
+            <label for="valor7" class="form-label">informe o valor 7:</label>
+            <input type="text" id="valor7" name="valor7" class="form-control" required="">
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
 
+    <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $valor1 = $_POST['valor1'];
         $valor2 = $_POST['valor2'];
@@ -45,41 +79,5 @@
 
         echo "<p> O menor valor informado é: $menor e está na posição $posicao";
     }
-    ?>
-    
-    <h1 style="text-align: center;">Exercício Menor Numero</h1>
-    <form method="post">
-        <div class="mb-3">
-            <label for="valor1" class="form-label">informe o valor 1:</label>
-            <input type="text" id="valor1" name="valor1" class="form-control" required="">
-        </div>
-        <div class="mb-3">
-            <label for="valor2" class="form-label">informe o valor 2:</label>
-            <input type="text" id="valor2" name="valor2" class="form-control" required="">
-        </div>
-        <div class="mb-3">
-            <label for="valor3" class="form-label">informe o valor 3:</label>
-            <input type="text" id="valor3" name="valor3" class="form-control" required="">
-        </div>
-        <div class="mb-3">
-            <label for="valor4" class="form-label">informe o valor 4:</label>
-            <input type="text" id="valor4" name="valor4" class="form-control" required="">
-        </div>
-        <div class="mb-3">
-            <label for="valor5" class="form-label">informe o valor 5:</label>
-            <input type="text" id="valor5" name="valor5" class="form-control" required="">
-        </div>
-        <div class="mb-3">
-            <label for="valor6" class="form-label">informe o valor 6:</label>
-            <input type="text" id="valor6" name="valor6" class="form-control" required="">
-        </div>
-        <div class="mb-3">
-            <label for="valor7" class="form-label">informe o valor 7:</label>
-            <input type="text" id="valor7" name="valor7" class="form-control" required="">
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
-
-    <?php
     include("rodape.php");
     ?>

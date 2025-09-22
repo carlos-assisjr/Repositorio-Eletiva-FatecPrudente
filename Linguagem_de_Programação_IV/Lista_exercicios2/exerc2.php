@@ -1,16 +1,5 @@
 <?php
 include("cabecalho.php");
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $valor1 = $_POST["valor1"];
-    $valor2 = $_POST["valor2"];
-    if ($valor1 != $valor2) {
-        $soma = $valor1 + $valor2;
-        echo "<p>A soma dos valores é $soma</p>";
-    } else {
-        $somax3 = ($valor1 + $valor2) * 3;
-        echo "<p>Numeros iguais, soma dos valores X3 é $somax3</p>";
-    }
-}
 ?>
 <form method="post">
     <div class="mb-3">
@@ -24,5 +13,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 <?php
-include("rodape.php");
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $valor1 = $_POST["valor1"];
+    $valor2 = $_POST["valor2"];
+    if ($valor1 != $valor2) {
+        $soma = $valor1 + $valor2;
+        echo "<p>A soma dos valores é $soma</p>";
+    } else {
+        $somax3 = ($valor1 + $valor2) * 3;
+        echo "<p>Numeros iguais, soma dos valores X3 é $somax3</p>";
+    }
+    include("rodape.php");
+}
 ?>

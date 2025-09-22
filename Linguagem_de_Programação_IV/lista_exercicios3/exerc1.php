@@ -1,9 +1,5 @@
 <?php
 include("cabecalho.php");
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $palavra = $_POST['palavra'];
-    echo "<p>$palavra contém: " . strlen($palavra) .   " caracteres </p>";
-}
 ?>
 <h1>conte a quantidade de letras</h1>
 <form method="post">
@@ -14,5 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 <?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $palavra = $_POST['palavra'];
+    echo "<p>$palavra contém: " . strlen($palavra) .   " caracteres </p>";
+}
 include("rodape.php");
 ?>

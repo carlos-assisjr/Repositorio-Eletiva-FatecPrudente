@@ -1,12 +1,5 @@
 <?php
 include("cabecalho.php");
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $palavra = $_POST['palavra'];
-    $palavra2 = $_POST['palavra2'];
-
-    $posicao = strpos($palavra, "$palavra2") . "</p>";
-    echo "<p> A palavra '$palavra2' está contida em '$palavra' na posição $posicao</p>";
-}
 ?>
 <h1>verifique se a segunda palavra está contida na primeira</h1>
 <form method="post">
@@ -21,5 +14,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 <?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $palavra = $_POST['palavra'];
+    $palavra2 = $_POST['palavra2'];
+
+    $posicao = strpos($palavra, $palavra2);
+    if ($posicao !== false) {
+        echo "<p>A palavra '$palavra2' está contida em '$palavra' na posição $posicao.</p>";
+    } else {
+        echo "<p>A palavra '$palavra2' não foi encontrada em '$palavra'.</p>";
+    }
+}
 include("rodape.php");
 ?>

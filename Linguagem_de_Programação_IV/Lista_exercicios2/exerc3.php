@@ -1,16 +1,7 @@
 <?php
 include("cabecalho.php");
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $valorA = $_POST["valorA"];
-    $valorB = $_POST["valorB"];
-    if ($valorA != $valorB) {
-        echo "$valorA $valorB";
-    } else {
-        echo "<p>Numeros iguais: $valorA";
-    }
-}
 ?>
+
 <form method="post">
     <div class="mb-3">
         <label for="valorA" class="form-label">Informe o valor de A:</label>
@@ -23,5 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 <?php
-include("rodape.php");
-?>
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $valorA = $_POST["valorA"];
+    $valorB = $_POST["valorB"];
+    if ($valorA != $valorB) {
+        echo "$valorA $valorB";
+    } else {
+        echo "<p>Numeros iguais: $valorA";
+    }
+    include("rodape.php");
+}

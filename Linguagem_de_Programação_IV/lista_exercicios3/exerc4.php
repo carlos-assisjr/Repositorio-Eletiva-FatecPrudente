@@ -1,20 +1,6 @@
 <?php
 include("cabecalho.php");
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    $dia = (int)$_POST['dia'];
-    $mes = (int)$_POST['mes'];
-    $ano = (int)$_POST['ano'];
-
-    if (checkdate($dia, $mes, $ano)) {
-        $data = sprintf("%02d/%02d/%04d", $dia, $mes, $ano);
-        echo "<p>data válida: $data</p>";
-    } else {
-        echo "<p>Data inválida!</p>";
-    }
-}
 ?>
-
 <h1>Verifique se a data informada é válida e apresente a data em formato dd/mm/YYYY. </h1>
 <form method="post">
     <div class="mb-3">
@@ -32,5 +18,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 <?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $dia = (int)$_POST['dia'];
+    $mes = (int)$_POST['mes'];
+    $ano = (int)$_POST['ano'];
+
+    if (checkdate($dia, $mes, $ano)) {
+        $data = sprintf("%02d/%02d/%04d", $dia, $mes, $ano);
+        echo "<p>data válida: $data</p>";
+    } else {
+        echo "<p>Data inválida!</p>";
+    }
+}
 include("rodape.php");
 ?>

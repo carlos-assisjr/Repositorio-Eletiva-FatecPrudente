@@ -1,10 +1,5 @@
 <?php
 include("cabecalho.php");
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $palavra = $_POST['palavra'];
-    echo "<p> todas em maiusculo: " . strtoupper($palavra) . "</p>";
-    echo "<p> todas em minuscula: " . strtolower($palavra) . "</p>";
-}
 ?>
 <h1>maiúsculas - minúscula</h1>
 <form method="post">
@@ -15,5 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 <?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $palavra = $_POST['palavra'];
+    echo "<p> todas em maiusculo: " . strtoupper($palavra) . "</p>";
+    echo "<p> todas em minuscula: " . strtolower($palavra) . "</p>";
+}
 include("rodape.php");
 ?>
