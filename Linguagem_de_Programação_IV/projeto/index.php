@@ -53,6 +53,16 @@
 </head>
 <body>
     <div class="card-login">
+        <?php
+        if(isset($_GET['cadastro'])){
+            $cadastro= $_GET['cadastro'];
+        if($cadastro){
+            echo"<p class='text-success'>Cadastro realizado com sucesso </p>";
+        }else{
+            echo'<p class="text-danger"> Erro ao realizar o cadrasto </p>';
+        }
+        }
+        ?>
         <h2 class="text-center">Acesso ao Sistema</h2>
         <form action="/login" method="POST">
             <div class="mb-3">
