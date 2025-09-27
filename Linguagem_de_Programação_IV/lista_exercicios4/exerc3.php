@@ -14,7 +14,6 @@ Crie um formulário que leia dados de 5 produtos, que são: código, nome e pre�
     <h1>Aplique um desconto de 10% em todos os produtos com preço acima de R$100,00 e exiba a lista ordenada pelo nome do produto.</h1>
     <form method="post">
       <?php for ($i = 1; $i <= 5; $i++): ?> <!--para adicionar um loop -->
-
         <div class="row inline-row mb-3">
           <div class="col-md-4">
             <label for="codigo[]" class="form-label">Informe o código do produto:</label>
@@ -34,16 +33,23 @@ Crie um formulário que leia dados de 5 produtos, que são: código, nome e pre�
     </form>
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $codigo = $_POST['codigo'];
-            $nome = $_POST['nome'];
-            $preco = $_POST['preco'];
+      $codigo = $_POST['codigo'];
+      $nome = $_POST['nome'];
+      $preco = $_POST['preco'];
 
-            $produto = [];
-            for ($i = 0; $i < 5; $i++) {
-              if ($preco > 100){
-                 $novo_preco = $preco - ($preco * 0.10);
-              }
+      $produto = [];
+      for ($i = 0; $i < 5; $i++) {
+        if ($preco[i] > 100) {
+          $novo_preco = $$preco[i] - ($$preco[i] * 0.10);
+        }
+       $produto[$nomes[$i]] = $nome;
+    }
+                uksort($produto, 'strcasecmp');
+            // Exibe os contatos
+            foreach ($produto as $nome =>$preco => $codigo) {
+                echo "<p>Nome: $nome - preço: $$preco - codigo: $codigo";
             }
+
     }
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
