@@ -1,7 +1,7 @@
 <?php
 include("cabecalho.php");
 ?>
-<h1>recebe um número de ponto flutuante e retorna o número arredondado</h1>
+<h4>recebe um número de ponto flutuante e retorna o número arredondado</h4>
 <form method="post">
     <div class="mb-3">
         <label for="valor" class="form-label">informe um valor:</label>

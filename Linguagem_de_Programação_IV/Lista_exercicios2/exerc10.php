@@ -1,5 +1,5 @@
 <?php include("cabecalho.php"); ?>
-
+<h4 class="text-center">tabuada</h4>
 <form method="post">
     <div class="mb-3">
         <label for="numero" class="form-label">informe numero:</label>

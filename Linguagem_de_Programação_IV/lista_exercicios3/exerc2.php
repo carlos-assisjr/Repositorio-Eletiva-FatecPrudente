@@ -1,7 +1,7 @@
 <?php
 include("cabecalho.php");
 ?>
-<h1>maiúsculas - minúscula</h1>
+<h4>maiúsculas - minúscula</h4>
 <form method="post">
     <div class="mb-3">
         <label for="palavra" class="form-label">informe uma palavra:</label>

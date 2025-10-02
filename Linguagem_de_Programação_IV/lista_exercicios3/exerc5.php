@@ -1,7 +1,7 @@
 <?php
 include("cabecalho.php");
 ?>
-<h1>leia um valor e retorna a raiz quadrada desse número. </h1>
+<h4>leia um valor e retorna a raiz quadrada desse número. </h4>
 <form method="post">
     <div class="mb-3">
         <label for="valor" class="form-label">informe um valor:</label>

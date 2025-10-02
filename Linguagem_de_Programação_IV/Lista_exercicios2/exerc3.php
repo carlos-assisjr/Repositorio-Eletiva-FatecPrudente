@@ -1,5 +1,5 @@
 <?php include("cabecalho.php");?>
-
+<h4 class="text-center">Exercício 3</h4>
 <form method="post">
     <div class="mb-3">
         <label for="valorA" class="form-label">Informe o valor de A:</label>

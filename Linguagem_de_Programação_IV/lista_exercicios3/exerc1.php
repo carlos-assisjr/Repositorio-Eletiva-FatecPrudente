@@ -1,7 +1,7 @@
 <?php
 include("cabecalho.php");
 ?>
-<h1>conte a quantidade de letras</h1>
+<h4>conte a quantidade de letras</h4>
 <form method="post">
     <div class="mb-3">
         <label for="palavra" class="form-label">informe uma palavra:</label>

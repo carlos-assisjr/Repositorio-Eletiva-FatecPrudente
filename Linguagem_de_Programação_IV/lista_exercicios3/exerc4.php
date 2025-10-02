@@ -1,7 +1,7 @@
 <?php
 include("cabecalho.php");
 ?>
-<h1>Verifique se a data informada é válida e apresente a data em formato dd/mm/YYYY. </h1>
+<h4>Verifique se a data informada é válida e apresente a data em formato dd/mm/YYYY. </h4>
 <form method="post">
     <div class="mb-3">
         <label for="dia" class="form-label">informe o dia:</label>
