@@ -25,8 +25,8 @@
         <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $valor2 = $_POST['valor2'];
+            $valor1 = $_POST['valor1'];
             if ($valor2 != 0) {
-                $valor1 = $_POST['valor1'];
                 $divisao = $valor1 / $valor2;
                 echo "<p> O resultado da divisão: $divisao</p>";
             } else {

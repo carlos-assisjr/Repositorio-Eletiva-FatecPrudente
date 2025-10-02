@@ -18,10 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $valor2 = $_POST["valor2"];
     if ($valor1 != $valor2) {
         $soma = $valor1 + $valor2;
-        echo "<p>A soma dos valores é $soma</p>";
+        echo "<p>A soma dos valores é: $soma</p>";
     } else {
         $somax3 = ($valor1 + $valor2) * 3;
-        echo "<p>Numeros iguais, soma dos valores X3 é $somax3</p>";
+        echo "<p>Numeros iguais, o triplo da soma é: $somax3</p>";
     }
     include("rodape.php");
 }
