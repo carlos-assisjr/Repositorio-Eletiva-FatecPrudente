@@ -1,6 +1,5 @@
-<?php
-include("cabecalho.php");
-?>
+<?php include("cabecalho.php");?>
+
 <form method="post">
     <div class="mb-3">
         <label for="valor" class="form-label">informe o valor do produto:</label>
@@ -17,6 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo "<p>O valor do produto é: $valor<p>";
     }
-    include("rodape.php");
 }
 ?>
+<?php include("rodape.php");?>

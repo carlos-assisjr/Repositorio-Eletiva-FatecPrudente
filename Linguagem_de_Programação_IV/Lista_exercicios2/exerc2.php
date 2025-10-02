@@ -1,6 +1,5 @@
-<?php
-include("cabecalho.php");
-?>
+
+<?php include("cabecalho.php");?>
 <form method="post">
     <div class="mb-3">
         <label for="valor1" class="form-label">informe o valor 1:</label>
@@ -23,6 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $somax3 = ($valor1 + $valor2) * 3;
         echo "<p>Numeros iguais, o triplo da soma é: $somax3</p>";
     }
-    include("rodape.php");
 }
 ?>
+<?php include("rodape.php");?>

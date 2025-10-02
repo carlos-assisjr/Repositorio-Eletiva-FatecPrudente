@@ -1,6 +1,4 @@
-<?php
-include("cabecalho.php");
-?>
+<?php include("cabecalho.php"); ?>
 <form method="post">
     <div class="mb-3">
         <label for="numero" class="form-label">informe numero:</label>
@@ -17,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // fatorial*- $i;
     }
     echo "o fatorial de $numero é $fatorial";
-    include("rodape.php");
 }
 
 ?>
+<?php include("rodape.php"); ?>

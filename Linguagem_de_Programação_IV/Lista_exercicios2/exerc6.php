@@ -1,6 +1,4 @@
-<?php
-include("cabecalho.php");
-?>
+<?php include("cabecalho.php"); ?>
 <form method="post">
     <div class="mb-3">
         <label for="numero" class="form-label">informe um numero:</label>
@@ -14,6 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     for ($i = 1; $i <= $numero; $i++) {
         echo "<p>{$i}</p>";
     }
-    include("rodape.php");
 }
 ?>
+<?php include("rodape.php"); ?>

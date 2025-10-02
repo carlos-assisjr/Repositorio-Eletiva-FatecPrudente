@@ -1,6 +1,4 @@
-<?php
-include("cabecalho.php");
-?>
+<?php include("cabecalho.php");?>
 
 <form method="post">
     <div class="mb-3">
@@ -22,5 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo "<p>Numeros iguais: $valorA";
     }
-    include("rodape.php");
 }
+?>
+<?php include("rodape.php"); ?>

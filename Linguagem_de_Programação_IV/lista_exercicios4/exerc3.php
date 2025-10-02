@@ -1,4 +1,3 @@
-Crie um formulário que leia dados de 5 produtos, que são: código, nome e preço. Leia os dados e crie um mapa ordenado onde as chaves são os códigos dos produtos e os valores são também mapas ordenados com o nome e o preço dos produtos. Aplique um desconto de 10% em todos os produtos com preço acima de R$100,00 e exiba a lista ordenada pelo nome do produto.
 <!doctype html>
 <html lang="pt-BR">
 
@@ -38,19 +37,19 @@ Crie um formulário que leia dados de 5 produtos, que são: código, nome e pre�
       $preco = $_POST['preco'];
 
       $produto = [];
-      for ($i = 0; $i < 5; $i++) {
-        if ($preco[i] > 100) {
-          $novo_preco = $$preco[i] - ($$preco[i] * 0.10);
+   //   for ($i = 0; $i < 5; $i++) {
+  //      if ($preco[i] > 100) {
+  //        $novo_preco = $$preco[i] - ($$preco[i] * 0.10);
         }
        $produto[$nomes[$i]] = $nome;
-    }
+  //  }
                 uksort($produto, 'strcasecmp');
             // Exibe os contatos
-            foreach ($produto as $nome =>$preco => $codigo) {
+          //  foreach ($produto as $nome =>$preco => $codigo) {
                 echo "<p>Nome: $nome - preço: $$preco - codigo: $codigo";
-            }
+     //       }
 
-    }
+   // }//
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
   </div>
