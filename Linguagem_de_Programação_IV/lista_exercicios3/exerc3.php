@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($posicao !== false) {
         echo "<p>A palavra '$palavra2' está contida em '$palavra' na posição $posicao.</p>";
     } else {
-        echo "<p>A palavra '$palavra2' não foi encontrada em '$palavra'.</p>";
+        echo "<p>A palavra '$palavra2' NÃO foi encontrada em '$palavra'.</p>";
     }
 }
 include("rodape.php");
