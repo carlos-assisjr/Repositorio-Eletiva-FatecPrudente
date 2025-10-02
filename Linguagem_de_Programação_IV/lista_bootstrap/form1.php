@@ -12,7 +12,7 @@
     <div class="container my-4">
         <!--my significa margin vertical (em cima e embaixo)-->
         <!-- Formulário 1 -->
-        <h5 class="mt-4">Formulário 1</h5> <!-- mt = margem no topo , mb = margem embaixo-->
+        <h5 class="mt-4">Formulário 1</h5> 
         <div class="border p-3 rounded mb-4">
             <!--p = padding (margem interna / espaçamento dentro)-->
             <form>

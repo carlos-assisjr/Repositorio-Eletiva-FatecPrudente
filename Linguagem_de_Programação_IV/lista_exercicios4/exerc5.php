@@ -1,67 +1,47 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Livros</title>
-</head>
-<body>
-    <h1>Adicionar Livros</h1>
-    <form method="POST">
-        <label for="titulo">Título do Livro:</label>
-        <input type="text" id="titulo" name="titulo" required><br><br>
-
-        <label for="quantidade">Quantidade em Estoque:</label>
-        <input type="number" id="quantidade" name="quantidade" required><br><br>
-
-        <input type="submit" value="Adicionar Livro">
+<?php include 'cabecalho.php'; ?>
+<div class="container my-4">
+    <h4 class="text-center">Adicionar Livros</h4>
+    <form method="POST" class="border p-4 rounded shadow-sm bg-light">
+        <?php for ($i = 1; $i <= 5; $i++): ?>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Título do <?= $i ?>º Livro:</label>
+                    <input type="text" name="titulo[]" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Quantidade em Estoque:</label>
+                    <input type="number" name="quantidade[]" class="form-control" required>
+                </div>
+            </div>
+        <?php endfor; ?>
+        <button type="submit" class="btn btn-primary w-100">Adicionar Livros</button>
     </form>
-</body>
-</html>
-<?php
-session_start();
+</div>
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $titulos = $_POST['titulo'];
+        $quantidades = $_POST['quantidade'];
 
-if (!isset($_SESSION['livros'])) {
-    $_SESSION['livros'] = [];
-}
-function verificaBaixaQuantidade($quantidade) {
-    return $quantidade < 5;
-}
+        $livros = [];
 
-function verificaDuplicata($titulo, $livros) {
-    foreach ($livros as $livro) {
-        if ($livro['titulo'] === $titulo) {
-            return true;
+        // percorre os vetores de títulos e quantidades
+        for ($i = 0; $i < count($titulos); $i++) {
+            $livros[$titulos[$i]] = (int)$quantidades[$i];
         }
+        uksort($livros, 'strcasecmp');  // ordena por título (chave do array)
+        echo "<h3 class='text-center'>Livros em Estoque</h3>";
+        echo "<table class='table table-bordered table-hover'>";
+        echo "<thead class='table-dark'><tr><th>Título</th><th>Quantidade</th></tr></thead><tbody>";
+
+        foreach ($livros as $titulo => $quantidade) {
+            if ($quantidade < 5) {
+                echo "<tr class='table-danger'><td>{$titulo}</td><td>{$quantidade} (Estoque baixo!)</td></tr>";
+            } else {
+                echo "<tr><td>{$titulo}</td><td>{$quantidade}</td></tr>";
+            }
+        }
+
+        echo "</tbody></table>";
     }
-    return false;
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $titulo = trim($_POST['titulo']);
-    $quantidade = intval($_POST['quantidade']);
-
-    if (!verificaDuplicata($titulo, $_SESSION['livros'])) {
-        $_SESSION['livros'][$titulo] = $quantidade;
-        echo "Livro adicionado com sucesso!<br>";
-    } else {
-        echo "Erro: Título de livro duplicado!<br>";
-    }
-}
-
-ksort($_SESSION['livros']);  
-
-echo "<h2>Lista de Livros Ordenada pelo Título</h2>";
-echo "<table border='1'>";
-echo "<tr><th>Título</th><th>Quantidade em Estoque</th></tr>";
-
-foreach ($_SESSION['livros'] as $titulo => $quantidade) {
-    if (verificaBaixaQuantidade($quantidade)) {
-        echo "<tr><td><strong>{$titulo}</strong></td><td style='color: red;'><strong>{$quantidade}</strong> - Baixa Quantidade!</td></tr>";
-    } else {
-        echo "<tr><td>{$titulo}</td><td>{$quantidade}</td></tr>";
-    }
-}
-
-echo "</table>";
-?>
+    ?>
+    <?php include 'rodape.php'; ?>

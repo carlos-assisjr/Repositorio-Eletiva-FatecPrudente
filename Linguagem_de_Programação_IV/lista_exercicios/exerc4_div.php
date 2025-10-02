@@ -10,7 +10,7 @@
 
 <body>
     <div class="container">
-        <h1>Divisão de Valores</h1>
+        <h4 class="text-center">Divisão de Valores</h4>
         <form method="post">
             <div class="mb-3">
                 <label for="valor1" class="form-label">Informe o primeiro numero:</label>
@@ -30,7 +30,7 @@
                 $divisao = $valor1 / $valor2;
                 echo "<p> O resultado da divisão: $divisao</p>";
             } else {
-                echo "<p> Divisão com 0 não é permitido </p>";
+                echo "<p> O divisor 0 não é permitido </p>";
             }
         }
         ?>

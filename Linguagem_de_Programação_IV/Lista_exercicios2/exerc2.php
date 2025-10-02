@@ -1,5 +1,6 @@
+<?php include("cabecalho.php"); ?>
+<h4 class="text-center">Soma de Valores</h4>
 
-<?php include("cabecalho.php");?>
 <form method="post">
     <div class="mb-3">
         <label for="valor1" class="form-label">informe o valor 1:</label>
@@ -24,4 +25,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-<?php include("rodape.php");?>
+<?php include("rodape.php"); ?>
