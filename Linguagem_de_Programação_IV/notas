@@ -1,5 +1,5 @@
 // https://vanessaborges2.github.io/Gerador-Formulario/
-git config --global user.email "carlos.assis.jr@hotmail.com"
+git config --global user.email ""
 git config --global user.name "José Carlos"
 
 <!doctype html>

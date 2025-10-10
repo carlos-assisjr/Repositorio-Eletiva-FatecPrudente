@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,6 +14,7 @@
             align-items: center;
             height: 100vh;
         }
+
         .card-login {
             max-width: 450px;
             width: 100%;
@@ -21,19 +23,23 @@
             padding: 2.5rem;
             background-color: #fff;
         }
+
         .card-login h2 {
             font-weight: 700;
             color: #333;
             margin-bottom: 2rem;
         }
+
         .form-label {
             font-weight: 600;
             color: #555;
         }
+
         .form-control:focus {
             box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
             border-color: #0d6efd;
         }
+
         .btn-primary {
             width: 100%;
             font-weight: 600;
@@ -42,29 +48,53 @@
             background-color: #0d6efd;
             border-color: #0d6efd;
         }
+
         .btn-primary:hover {
             background-color: #0b5ed7;
             border-color: #0b5ed7;
         }
+
         .text-center {
             text-align: center;
         }
     </style>
 </head>
+
 <body>
     <div class="card-login">
         <?php
-        if(isset($_GET['cadastro'])){
-            $cadastro= $_GET['cadastro'];
-        if($cadastro){
-            echo"<p class='text-success'>Cadastro realizado com sucesso </p>";
-        }else{
-            echo'<p class="text-danger"> Erro ao realizar o cadrasto </p>';
+        if (isset($_GET['cadastro'])) {
+            $cadastro = $_GET['cadastro'];
+            if ($cadastro) {
+                echo "<p class='text-success'>Cadastro realizado com sucesso </p>";
+            } else {
+                echo '<p class="text-danger"> Erro ao realizar o cadrasto </p>';
+            }
         }
+        if ($_SERVER['REQUEST_METHOD'] == "POST"){
+            require('conexao.php');
+            $email = $_POST['email'];
+            $senha = ($_POST['senha']);
+            try{
+                $stmt =$pdo->prepare("SELECT * FROM usuario WHERE  email =?");
+                $stmt->execute([$email]);
+                $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+                if($usuario && password_verify($senha,$usuario['senha'])){
+                session_start();
+                $_SESSION['acesso'] = true;
+                $_SESSION['nome']  = $usuario['nome'];
+
+                header('location:principal.php');       
+            }else{
+                echo"<p class='text-danger'>Credenciais inválidas!</p>";
+            }
+            }catch(\Exception $e){
+                echo"ERRO: ",$e -> getMessage();
+            }
         }
         ?>
         <h2 class="text-center">Acesso ao Sistema</h2>
-        <form action="/login" method="POST">
+        <form action="index.php" method="POST">
             <div class="mb-3">
                 <label for="emailLogin" class="form-label">Email</label>
                 <input type="email" class="form-control" id="emailLogin" name="email" placeholder="Digite seu email" required />
@@ -81,4 +111,5 @@
         </p>
     </div>
 </body>
+
 </html>
