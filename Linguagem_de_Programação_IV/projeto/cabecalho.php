@@ -32,7 +32,7 @@
               Cadastros
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdown2">
-              <li><a class="dropdown-item" href="categoria.php">Categorias de Produtos</a></li>
+              <li><a class="dropdown-item" href="categorias.php">Categorias de Produtos</a></li>
               <li><a class="dropdown-item" href="produtos.php">Produtos</a></li>
             </ul>
           </li>
