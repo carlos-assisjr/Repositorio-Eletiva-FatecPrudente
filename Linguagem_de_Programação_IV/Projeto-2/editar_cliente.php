@@ -1,34 +1,39 @@
 <?php
-    require("cabecalho.php");
-    require("conexao.php");
+require("cabecalho.php");
+require("conexao.php");
 
-    // 1. Busca os dados do cliente atual para preencher o formulário
-    if(isset($_GET['id'])){
-        try {
-            $stmt = $pdo->prepare("SELECT * FROM cliente WHERE id = ?");
-            $stmt->execute([$_GET['id']]);
-            $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
-        } catch(Exception $e) {
-            echo "Erro ao buscar: " . $e->getMessage();
-        }
+// 1. Busca os dados do cliente atual para preencher o formulário
+if($_SERVER['REQUEST_METHOD'] == "GET") {
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM cliente WHERE id = ?");
+        $stmt->execute([$_GET['id']]);
+        $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        echo "Erro ao buscar: " . $e->getMessage();
     }
+}
 
-    // 2. Processa a atualização quando clica em Salvar
-    if($_SERVER['REQUEST_METHOD'] == "POST"){
-        $id = $_POST['id'];
-        $nome = $_POST['nome'];
-        $cpf = $_POST['cpf'];
-        $email = $_POST['email'];
-        $telefone = $_POST['telefone'];
+// 2. Processa a atualização quando clica em Salvar
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $id = $_POST['id'];
+    $nome = $_POST['nome'];
+    $cpf = $_POST['cpf'];
+    $email = $_POST['email'];
+    $telefone = $_POST['telefone'];
 
-        try {
-            $stmt = $pdo->prepare("UPDATE cliente SET nome = ?, cpf = ?, email = ?, telefone = ? WHERE id = ?");
-            $stmt->execute([$nome, $cpf, $email, $telefone, $id]);
-            header("location: cliente.php");
-        } catch(Exception $e) {
-            echo "<div class='alert alert-danger'>Erro ao atualizar: " . $e->getMessage() . "</div>";
+
+    try {
+        $stmt = $pdo->prepare("UPDATE cliente SET nome = ?, cpf = ?, email = ?, telefone = ? WHERE id = ?");
+
+        if ($stmt->execute([$nome, $cpf, $email, $telefone, $id])) {
+            header('location: cliente.php?editar=true');
+        } else {
+            header('location: cliente.php?editar=false');
         }
+    } catch (Exception $e) {
+        echo "<div class='alert alert-danger'>Erro ao atualizar: " . $e->getMessage() . "</div>";
     }
+}
 ?>
 
 <h2>Editar Cliente</h2>
@@ -45,7 +50,7 @@
             <label for="cpf" class="form-label">CPF</label>
             <input type="text" name="cpf" class="form-control" required value="<?= $cliente['cpf'] ?>">
         </div>
-        
+
         <div class="col-md-4 mb-3">
             <label for="telefone" class="form-label">Telefone</label>
             <input type="text" name="telefone" class="form-control" required value="<?= $cliente['telefone'] ?>">

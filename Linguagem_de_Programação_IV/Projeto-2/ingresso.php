@@ -27,10 +27,12 @@
         echo "<p class='text-danger'>Erro ao excluir!</p>";
     }
 ?>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Ingressos Disponíveis</h2>
+    <a href="novo_ingresso.php" class="btn btn-primary">+ Novo Ingresso</a>
+</div>
 
-<h2>Ingressos Disponíveis</h2>
-<a href="novo_ingresso.php" class="btn btn-primary mb-3">Novo Tipo de Ingresso</a>
-<table class="table table-hover">
+<table class="table table-hover table-striped">
     <thead>
         <tr>
             <th>Evento</th>
@@ -49,6 +51,7 @@
                 <td><?= $d['quant'] ?></td>
                 <td>
                     <a href="editar_ingresso.php?id=<?= $d['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="consultar_ingresso.php?id=<?= $d['id'] ?>" class="btn btn-info btn-sm">Consultar</a>
                 </td>
             </tr>
         <?php endforeach; ?>

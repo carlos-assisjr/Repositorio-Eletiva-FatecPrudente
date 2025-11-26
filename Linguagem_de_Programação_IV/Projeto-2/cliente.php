@@ -1,23 +1,36 @@
 <?php
 require("cabecalho.php");
 require("conexao.php");
-
 try {
-    // Seleciona todos os clientes ordenados pelo nome
-    $stmt = $pdo->query("SELECT * FROM cliente c ORDER BY c.nome");
+    $stmt = $pdo->query("SELECT * FROM cliente c order BY c.nome");
     $dados = $stmt->fetchAll();
-} catch (Exception $e) {
-    echo "<div class='alert alert-danger'>Erro ao carregar clientes: " . $e->getMessage() . "</div>";
+} catch (\Exception $e) {
+    echo "Erro: " . $e->getMessage();
+}
+if (isset($_GET['cadastro']) && $_GET['cadastro']) {
+    echo "<p class='text-success'>Cadastro realizado!</p>";
+} else if (isset($_GET['cadastro']) && !$_GET['cadastro']) {
+    echo "<p class='text-danger'>Erro ao cadastrar!</p>";
+}
+if (isset($_GET['editar']) && $_GET['editar']) {
+    echo "<p class='text-success'>Registro editado!</p>";
+} else if (isset($_GET['editar']) && !$_GET['editar']) {
+    echo "<p class='text-danger'>Erro ao editar!</p>";
+}
+if (isset($_GET['excluir']) && $_GET['excluir']) {
+    echo "<p class='text-success'>Registro excluído!</p>";
+} else if (isset($_GET['cadastro']) && !$_GET['cadastro']) {
+    echo "<p class='text-danger'>Erro ao excluir!</p>";
 }
 ?>
 
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>Clientes Cadastrados</h2>
-    <a href="novo_cliente.php" class="btn btn-primary">Novo Cliente</a>
+    <a href="novo_cliente.php" class="btn btn-primary">+ Novo Cliente</a>
 </div>
 
 <table class="table table-hover table-striped">
-    <thead class="table-dark">
+    <thead>
         <tr>
             <th>ID</th>
             <th>Nome Completo</th>
@@ -37,7 +50,7 @@ try {
                 <td><?= $d['telefone'] ?></td>
                 <td>
                     <a href="editar_cliente.php?id=<?= $d['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                    <a href="editar_cliente.php?id=<?= $d['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="consultar_cliente.php?id=<?= $d['id'] ?>" class="btn btn-info btn-sm">Consultar</a>
                 </td>
             </tr>
         <?php endforeach; ?>

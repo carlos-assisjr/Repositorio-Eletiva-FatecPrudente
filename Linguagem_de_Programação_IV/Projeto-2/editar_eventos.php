@@ -1,44 +1,39 @@
 <?php
-    require("cabecalho.php");
-    require("conexao.php");
+require("cabecalho.php");
+require("conexao.php");
 
-    // 1. Busca os dados do evento atual para preencher o formulário
-    if(isset($_GET['id'])){
-        try {
-            $stmt = $pdo->prepare("SELECT * FROM evento WHERE id = ?");
-            $stmt->execute([$_GET['id']]);
-            $evento = $stmt->fetch(PDO::FETCH_ASSOC);
+// 1. Busca os dados do evento atual para preencher o formulário
 
-            // Se o evento não existir, volta para a lista
-            if(!$evento){
-                header("location: eventos.php");
-                exit;
-            }
-        } catch(Exception $e) {
-            echo "<div class='alert alert-danger'>Erro ao buscar: " . $e->getMessage() . "</div>";
-        }
+if ($_SERVER['REQUEST_METHOD'] == "GET") {
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM evento WHERE id = ?");
+        $stmt->execute([$_GET['id']]);
+        $evento = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        echo "<div class='alert alert-danger'>Erro ao buscar: " . $e->getMessage() . "</div>";
     }
+}
 
-    // 2. Processa a atualização quando clica em Salvar
-    if($_SERVER['REQUEST_METHOD'] == "POST"){
-        $id = $_POST['id'];
-        $nome = $_POST['nome'];
-        $local = $_POST['local'];
-        $data_evento = $_POST['data_evento'];
-        $descricao = $_POST['descricao'];
+// 2. Processa a atualização quando clica em Salvar
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $id = $_POST['id'];
+    $nome = $_POST['nome'];
+    $local = $_POST['local'];
+    $data_evento = $_POST['data_evento'];
+    $descricao = $_POST['descricao'];
 
         try {
-            $sql = "UPDATE evento SET nome = ?, local = ?, data_evento = ?, descricao = ? WHERE id = ?";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$nome, $local, $data_evento, $descricao, $id]);
-            
-            // Redireciona para a listagem
-            header("location: eventos.php");
-            exit;
-        } catch(Exception $e) {
-            echo "<div class='alert alert-danger'>Erro ao atualizar: " . $e->getMessage() . "</div>";
+        $stmt = $pdo->prepare("UPDATE evento SET nome = ?, local = ?, data_evento = ?, descricao = ? WHERE id = ?");
+
+        if ($stmt->execute([$nome, $local, $data_evento, $descricao, $id])) {
+            header('location: eventos.php?editar=true');
+        } else {
+            header('location: eventos.php?editar=false');
         }
+    } catch (Exception $e) {
+        echo "<div class='alert alert-danger'>Erro ao atualizar: " . $e->getMessage() . "</div>";
     }
+}
 ?>
 
 <div class="card mt-4">
@@ -57,8 +52,8 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="data_evento" class="form-label">Data e Hora</label>
-                    <input type="datetime-local" name="data_evento" class="form-control" required 
-                           value="<?= date('Y-m-d\TH:i', strtotime($evento['data_evento'])) ?>">
+                    <input type="datetime-local" name="data_evento" class="form-control" required
+                        value="<?= date('Y-m-d\TH:i', strtotime($evento['data_evento'])) ?>">
                 </div>
 
                 <div class="col-md-6 mb-3">

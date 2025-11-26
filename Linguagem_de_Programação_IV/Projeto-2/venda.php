@@ -3,7 +3,7 @@ require("cabecalho.php");
 require("conexao.php");
 
 // LÓGICA DE CANCELAMENTO (EXCLUSÃO)
-if(isset($_GET['excluir_id'])){
+if (isset($_GET['excluir_id'])) {
     $id = $_GET['excluir_id']; // ID da VENDA
 
     try {
@@ -14,7 +14,7 @@ if(isset($_GET['excluir_id'])){
         $stmt->execute([$id]);
         $venda = $stmt->fetch();
 
-        if($venda){
+        if ($venda) {
             // 2. Devolve 1 unidade ao estoque
             $stmt = $pdo->prepare("UPDATE ingresso SET quant = quant + 1 WHERE id = ?");
             $stmt->execute([$venda['ingresso_id']]);
@@ -77,21 +77,21 @@ try {
 
 <div class="card">
     <div class="card-body p-0">
-        <table class="table table-striped table-hover mb-0">
-            <thead class="table-dark">
-                <tr>
-                    <th>#</th> <th>Data</th>
-                    <th>Cliente</th>
-                    <th>Evento / Ingresso</th>
-                    <th>Valor</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
+        <table class="table table-hover ">
+
+            <tr>
+                <th>ID</th>
+                <th>Data</th>
+                <th>Cliente</th>
+                <th>Evento / Ingresso</th>
+                <th>Valor</th>
+                <th>Ações</th>
+            </tr>
             <tbody>
                 <?php foreach ($vendas as $v): ?>
                     <tr>
-                        <td><?= $v['id_venda'] ?></td> 
-                        
+                        <td><?= $v['id_venda'] ?></td>
+
                         <td>
                             <?= date('d/m/Y', strtotime($v['data_venda'])) ?> <br>
                             <small class="text-muted"><?= date('H:i', strtotime($v['data_venda'])) ?></small>
@@ -106,8 +106,8 @@ try {
                         </td>
                         <td>
                             <a href="venda.php?excluir_id=<?= $v['id_venda'] ?>"
-                               class="btn btn-danger btn-sm"
-                               onclick="return confirm('Tem certeza? Isso devolverá o ingresso ao estoque.');">
+                                class="btn btn-danger btn-sm"
+                                onclick="return confirm('Tem certeza? Isso devolverá o ingresso ao estoque.');">
                                 Cancelar Venda
                             </a>
                         </td>

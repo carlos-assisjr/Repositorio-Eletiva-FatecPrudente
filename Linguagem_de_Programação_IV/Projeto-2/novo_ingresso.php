@@ -8,12 +8,8 @@ $eventos = $pdo->query("SELECT * FROM evento")->fetchAll();
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     try {
         $stmt = $pdo->prepare("INSERT INTO ingresso (tipo, valor, quant, evento_id) VALUES (?, ?, ?, ?)");
-        $stmt->execute([
-            $_POST['tipo'],
-            $_POST['valor'],
-            $_POST['quant'],
-            $_POST['id']
-        ]);
+        $stmt->execute([$_POST['tipo'],$_POST['valor'],
+            $_POST['quant'],$_POST['id']]);
         header("location: ingresso.php");
     } catch (Exception $e) {
         echo "Erro: " . $e->getMessage();

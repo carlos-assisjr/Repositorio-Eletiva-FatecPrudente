@@ -6,8 +6,6 @@ require("conexao.php");
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $cliente_id = $_POST['cliente_id'];
     $ingresso_id = $_POST['ingresso_id'];
-
-    // CORREÇÃO AQUI: O nome correto que vem do HTML é 'quantidade'
     $quantidade_desejada = (int)$_POST['quantidade'];
 
     try {

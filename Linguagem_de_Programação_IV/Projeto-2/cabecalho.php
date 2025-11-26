@@ -12,7 +12,7 @@ if (!isset($_SESSION['acesso']))
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>🎟️Sistema de Venda de Ingressos Online</title>
+    <title>Sistema de Venda de Ingressos Online</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style>
@@ -26,7 +26,7 @@ if (!isset($_SESSION['acesso']))
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="principal.php">🎟️ Venda de Ingressos Online</a>
+            <a class="navbar-brand" href="principal.php"> Venda de Ingressos Online</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Alternar navegação">
                 <span class="navbar-toggler-icon"></span>
             </button>

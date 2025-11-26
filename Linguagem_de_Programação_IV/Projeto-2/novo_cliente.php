@@ -1,10 +1,11 @@
 <?php
     require("cabecalho.php");
+    require("conexao.php");
     
+    
+    // Coleta os dados do formulário
     if($_SERVER['REQUEST_METHOD'] == "POST"){
-        require("conexao.php");
-        
-        // Coleta os dados do formulário
+
         $nome = $_POST['nome'];
         $cpf = $_POST['cpf'];
         $email = $_POST['email'];
@@ -13,7 +14,6 @@
         try {
             $stmt = $pdo->prepare("INSERT INTO cliente (nome, cpf, email, telefone) VALUES (?, ?, ?, ?)");
             $stmt->execute([$nome, $cpf, $email, $telefone]);
-            
             // Redireciona para a listagem com sucesso
             header("location: cliente.php");
         } catch(Exception $e) {

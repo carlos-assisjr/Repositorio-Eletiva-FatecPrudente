@@ -1,7 +1,9 @@
 <?php
     require("cabecalho.php");
+    require("conexao.php");
+
+    
     if($_SERVER['REQUEST_METHOD'] == "POST"){
-        require("conexao.php");
         $nome = $_POST['nome'];
         $local = $_POST['local'];
         $data = $_POST['data_evento'];
