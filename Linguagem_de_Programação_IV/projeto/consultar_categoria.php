@@ -1,4 +1,3 @@
-
 <?php
     require("cabecalho.php");
     require("conexao.php");
