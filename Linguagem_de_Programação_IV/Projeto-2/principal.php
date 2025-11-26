@@ -4,10 +4,12 @@ require("cabecalho.php");
 
 <div class="row mb-4">
   <div class="col-12">
-    <h1 class="display-5">Olá, <?= $_SESSION['nome'] ?>!</h1>
-    <a href="logout.php" method="post">
-      <button type="danger" class="btn btn-danger mb-3">Sair</button>
-    </a>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h1 class="display-5">Seja Bem-vindo, <?= $_SESSION['nome'] ?>!</h1>
+      <a href="logout.php" method="post">
+        <button type="danger" class="btn btn-danger mb-3">Sair</button>
+      </a>
+    </div>
     <p class="lead text-center">Painel de Controle</p>
 
   </div>
@@ -37,7 +39,6 @@ require("cabecalho.php");
       </div>
     </div>
   </div>
-
 </div>
 
 <?php
