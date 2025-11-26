@@ -9,30 +9,31 @@ try {
 } catch (Exception $d) {
     echo "Erro: " . $d->getMessage();
 }
-if (isset($_GET['cadastro']) && $_GET['cadastro']){
-        echo "<p class='text-success'>Cadastro realizado!</p>";
-    } else if (isset($_GET['cadastro']) && !$_GET['cadastro']){
-        echo "<p class='text-danger'>Erro ao cadastrar!</p>";
-    }
-    if (isset($_GET['editar']) && $_GET['editar']){
-        echo "<p class='text-success'>Registro editado!</p>";
-    } else if (isset($_GET['editar']) && !$_GET['editar']){
-        echo "<p class='text-danger'>Erro ao editar!</p>";
-    }
-    if (isset($_GET['excluir']) && $_GET['excluir']){
-        echo "<p class='text-success'>Registro excluído!</p>";
-    } else if (isset($_GET['cadastro']) && !$_GET['cadastro']){
-        echo "<p class='text-danger'>Erro ao excluir!</p>";
-    }
+if (isset($_GET['cadastro']) && $_GET['cadastro']) {
+    echo "<p class='text-success'>Cadastro realizado!</p>";
+} else if (isset($_GET['cadastro']) && !$_GET['cadastro']) {
+    echo "<p class='text-danger'>Erro ao cadastrar!</p>";
+}
+if (isset($_GET['editar']) && $_GET['editar']) {
+    echo "<p class='text-success'>Registro editado!</p>";
+} else if (isset($_GET['editar']) && !$_GET['editar']) {
+    echo "<p class='text-danger'>Erro ao editar!</p>";
+}
+if (isset($_GET['excluir']) && $_GET['excluir']) {
+    echo "<p class='text-success'>Registro excluído!</p>";
+} else if (isset($_GET['cadastro']) && !$_GET['cadastro']) {
+    echo "<p class='text-danger'>Erro ao excluir!</p>";
+}
 ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>Eventos Cadastrados</h2>
     <a href="novo_evento.php" class="btn btn-primary">+ Novo Evento</a>
 </div>
 <table class="table table-hover table-striped">
-        <thead>
+    <thead>
         <tr>
             <th>ID</th>
+            <th>Tipo</th>
             <th>Nome</th>
             <th>Data</th>
             <th>Local</th>
@@ -43,13 +44,15 @@ if (isset($_GET['cadastro']) && $_GET['cadastro']){
         <?php foreach ($dados as $d): ?>
             <tr>
                 <td><?= $d['id'] ?></td>
+                <td>
+                    <span class="badge bg-secondary"><?= isset($d['categoria']) ? $d['categoria'] : '-' ?></span>
+                </td>
                 <td><?= $d['nome'] ?></td>
                 <td><?= date('d/m/Y H:i', strtotime($d['data_evento'])) ?></td>
                 <td><?= $d['local'] ?></td>
                 <td>
                     <a href="editar_eventos.php?id=<?= $d['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
                     <a href="consultar_evento.php?id=<?= $d['id'] ?>" class="btn btn-info btn-sm">Consultar</a>
-
                 </td>
             </tr>
         <?php endforeach; ?>

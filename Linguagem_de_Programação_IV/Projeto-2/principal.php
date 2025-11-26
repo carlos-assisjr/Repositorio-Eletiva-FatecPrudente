@@ -5,10 +5,11 @@ require("cabecalho.php");
 <div class="row mb-4">
   <div class="col-12">
     <h1 class="display-5">Olá, <?= $_SESSION['nome'] ?>!</h1>
-    <form action="logout.php" method="post">
+    <a href="logout.php" method="post">
       <button type="danger" class="btn btn-danger mb-3">Sair</button>
-    </form>
-    <p class="lead">Painel de Controle do Sistema de Ingressos.</p>
+    </a>
+    <p class="lead text-center">Painel de Controle</p>
+
   </div>
 </div>
 

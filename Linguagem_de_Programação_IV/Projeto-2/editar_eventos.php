@@ -20,12 +20,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $nome = $_POST['nome'];
     $local = $_POST['local'];
     $data_evento = $_POST['data_evento'];
+    $categoria = $_POST['categoria'];
     $descricao = $_POST['descricao'];
 
-        try {
-        $stmt = $pdo->prepare("UPDATE evento SET nome = ?, local = ?, data_evento = ?, descricao = ? WHERE id = ?");
 
-        if ($stmt->execute([$nome, $local, $data_evento, $descricao, $id])) {
+
+    try {
+        $stmt = $pdo->prepare("UPDATE evento SET nome = ?, local = ?, data_evento = ?, descricao = ?, categoria = ? WHERE id = ?");
+
+        if ($stmt->execute([$nome, $local, $data_evento, $descricao,$categoria, $id])) {
             header('location: eventos.php?editar=true');
         } else {
             header('location: eventos.php?editar=false');
@@ -63,6 +66,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </div>
 
             <div class="mb-3">
+                <label class="form-label fw-bold">Tipo</label>
+                <select name="categoria" class="form-select" required>
+                    <option value="Show" <?= ($evento['categoria'] == 'Show') ? 'selected' : '' ?>>🎸 Show</option>
+                    <option value="Teatro" <?= ($evento['categoria'] == 'Teatro') ? 'selected' : '' ?>>🎭 Teatro</option>
+                    <option value="Filme" <?= ($evento['categoria'] == 'Filme') ? 'selected' : '' ?>>🎬 Filme</option>
+                    <option value="Palestra" <?= ($evento['categoria'] == 'Palestra') ? 'selected' : '' ?>>🎤 Palestra</option>
+                    <option value="Esporte" <?= ($evento['categoria'] == 'Esporte') ? 'selected' : '' ?>>⚽ Esporte</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label for="descricao" class="form-label">Descrição</label>
                 <textarea name="descricao" class="form-control" rows="3"><?= $evento['descricao'] ?></textarea>
             </div>
@@ -74,5 +88,4 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </form>
     </div>
 </div>
-
 <?php require("rodape.php"); ?>

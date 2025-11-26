@@ -29,9 +29,16 @@
     <h1>Consultar Evento</h1>
     <form method="post">
         <input type="hidden" name="id" value="<?= $evento['id'] ?>">
-        <div class="mb-3">
-            <label for="nome" class="form-label">Nome do evento:</label>
-            <input disabled value="<?= $evento['nome']?>" type="text" id="nome" name="nome" class="form-control" required="">
+        
+        <div class="row">
+            <div class="col-md-8 mb-3">
+                <label class="form-label">Nome do evento:</label>
+                <input disabled value="<?= $evento['nome']?>" type="text" class="form-control">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label class="form-label">Tipo:</label>
+                <input disabled value="<?= isset($evento['categoria']) ? $evento['categoria'] : '' ?>" type="text" class="form-control">
+            </div>
         </div>
         <p>Deseja excluir esse registro?</p>
         <button type="submit" class="btn btn-danger">Excluir</button>
