@@ -33,8 +33,8 @@ require("cabecalho.php");
         <div class="card-body text-center">
           <h3 class="card-title text-secondary">📊</h3>
           <h5 class="card-title text-secondary">Relatórios</h5>
-          <p class="card-text">Ver histórico de vendas.</p>
-          <a href="relatorio.php" class="btn btn-outline-secondary w-100">Consultar</a>
+          <p class="card-text">Ver grafico das vendas.</p>
+          <a href="grafico.php" class="btn btn-outline-secondary w-100">Consultar</a>
         </div>
       </div>
     </div>

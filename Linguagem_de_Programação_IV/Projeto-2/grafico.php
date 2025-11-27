@@ -3,8 +3,7 @@ require("cabecalho.php");
 require("conexao.php");
 
 try {
-    // 1. Consulta SQL para agrupar vendas por Evento
-    // Soma o valor total e conta quantos ingressos foram vendidos por evento
+    // 1. Consulta SQL (Mantivemos a lógica que já funciona)
     $sql = "SELECT 
                 e.nome AS evento, 
                 COUNT(v.id) AS qtd_vendas, 
@@ -12,78 +11,131 @@ try {
             FROM venda v
             INNER JOIN ingresso i ON v.ingresso_id = i.id
             INNER JOIN evento e ON i.evento_id = e.id
-            GROUP BY e.id, e.nome";
+            GROUP BY e.id, e.nome
+            ORDER BY total_receita DESC"; // Ordenar do maior para o menor fica mais bonito
             
     $stmt = $pdo->query($sql);
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // 2. Preparar os dados para o Gráfico (Arrays separados)
-    $nomes_eventos = [];
-    $receitas = [];
+    // Arrays para o JS
+    $nomes = [];
+    $valores = [];
     $quantidades = [];
-    $cores = [];
 
     foreach ($dados as $d) {
-        $nomes_eventos[] = $d['evento'];
-        $receitas[] = $d['total_receita'];
-        $quantidades[] = $d['qtd_vendas'];
-        // Gera uma cor aleatória para cada barra
-        $cores[] = 'rgba(' . rand(50, 200) . ', ' . rand(50, 200) . ', ' . rand(50, 200) . ', 0.7)';
+        $nomes[] = $d['evento']; // Eixo X
+        $valores[] = $d['total_receita']; // Eixo Y
+        $quantidades[] = $d['qtd_vendas']; // Info extra para o tooltip
     }
 
-    // Transforma os arrays do PHP em texto JSON para o JavaScript ler
-    $json_nomes = json_encode($nomes_eventos);
-    $json_receitas = json_encode($receitas);
-
 } catch (Exception $e) {
-    echo "Erro ao buscar dados: " . $e->getMessage();
+    echo "Erro: " . $e->getMessage();
 }
 ?>
 
-<div class="container mt-4">
-    <h2 class="mb-4">📊 Gráfico de Faturamento por Evento</h2>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            
+            <div class="card border-0 shadow-lg" style="border-radius: 15px; overflow: hidden;">
+                <div class="card-header bg-dark text-white p-4 d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0"><i class="bi bi-bar-chart-line-fill me-2"></i> Faturamento por Evento</h4>
+                    <span class="badge bg-success p-2">Total Atualizado</span>
+                </div>
+                
+                <div class="card-body p-4">
+                    <div style="position: relative; height: 400px; width: 100%;">
+                        <canvas id="meuGrafico"></canvas>
+                    </div>
+                </div>
+                
+                <div class="card-footer bg-white border-0 text-center pb-4">
+                    <a href="relatorio.php" class="btn btn-outline-dark rounded-pill px-4">
+                        <i class="bi bi-table"></i> Ver Tabela de Dados
+                    </a>
+                </div>
+            </div>
 
-    <div class="card shadow">
-        <div class="card-body">
-            <canvas id="meuGrafico" width="400" height="150"></canvas>
         </div>
-    </div>
-    
-    <div class="text-center mt-3">
-        <a href="relatorio.php" class="btn btn-secondary">Ver Relatório Detalhado</a>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    // Pegando os dados que vieram do PHP
-    const nomes = <?php echo $json_nomes; ?>;
-    const valores = <?php echo $json_receitas; ?>;
-
-    // Configuração do Gráfico
     const ctx = document.getElementById('meuGrafico').getContext('2d');
+
+    // Cria um Gradiente bonito (Roxo para Azul)
+    let gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, 'rgba(54, 162, 235, 0.8)'); // Azul topo
+    gradient.addColorStop(1, 'rgba(153, 102, 255, 0.8)'); // Roxo base
+
     const myChart = new Chart(ctx, {
-        type: 'bar', // Tipo do gráfico: 'bar' (barras), 'pie' (pizza), 'line' (linha)
+        type: 'bar', // Tipo de gráfico
         data: {
-            labels: nomes, // Nomes dos eventos (Eixo X)
+            labels: <?php echo json_encode($nomes); ?>,
             datasets: [{
-                label: 'Faturamento (R$)',
-                data: valores, // Valores em dinheiro (Eixo Y)
-                backgroundColor: <?php echo json_encode($cores); ?>,
-                borderColor: 'rgba(0,0,0,0.1)',
-                borderWidth: 1
+                label: 'Faturamento',
+                data: <?php echo json_encode($valores); ?>,
+                backgroundColor: gradient, // Usa o gradiente criado acima
+                borderRadius: 8, // Barras arredondadas (fica muito mais moderno)
+                borderWidth: 0,
+                barPercentage: 0.6, // Largura da barra (para não ficar muito gorda)
+                // Dados extras para usar no tooltip (quantidades)
+                extraData: <?php echo json_encode($quantidades); ?> 
             }]
         },
         options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            },
+            responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    display: false // Esconde a legenda se quiser
+                    display: false // Esconde a legenda (pois só tem uma cor)
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    padding: 15,
+                    titleFont: { size: 14, weight: 'bold' },
+                    bodyFont: { size: 14 },
+                    callbacks: {
+                        // Formata o valor para R$ no tooltip (ao passar o mouse)
+                        label: function(context) {
+                            let valor = context.raw;
+                            let qtd = context.dataset.extraData[context.dataIndex]; // Pega a quantidade
+                            
+                            // Formata dinheiro BR
+                            let dinheiro = new Intl.NumberFormat('pt-BR', { 
+                                style: 'currency', 
+                                currency: 'BRL' 
+                            }).format(valor);
+
+                            return ` Faturamento: ${dinheiro} (${qtd} ingressos)`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: '#f0f0f0', // Linhas de grade bem suaves
+                        borderDash: [5, 5] // Linhas tracejadas
+                    },
+                    ticks: {
+                        // Formata o eixo Y para mostrar R$
+                        callback: function(value) {
+                            return 'R$ ' + value;
+                        },
+                        font: { size: 12, family: "'Segoe UI', sans-serif" }
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false // Remove as linhas verticais para limpar o visual
+                    },
+                    ticks: {
+                        font: { size: 13, weight: 'bold' }
+                    }
                 }
             }
         }
