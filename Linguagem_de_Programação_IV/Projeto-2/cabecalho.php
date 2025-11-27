@@ -42,6 +42,7 @@ if (!isset($_SESSION['acesso']))
                             <li><a class="dropdown-item" href="ingresso.php">Ingressos</a></li>
                             <li><a class="dropdown-item" href="eventos.php">Eventos</a></li>
                             <li><a class="dropdown-item" href="venda.php">Venda</a></li>
+                            <li><a class="dropdown-item" href="grafico.php">Gráfico</a></li>
                         </ul>
                         </a>
                 </ul>
