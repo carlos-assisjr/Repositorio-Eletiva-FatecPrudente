@@ -3,7 +3,6 @@ require("cabecalho.php");
 require("conexao.php");
 
 try {
-    // 1. Consulta SQL (Mantivemos a lógica que já funciona)
     $sql = "SELECT 
                 e.nome AS evento, 
                 COUNT(v.id) AS qtd_vendas, 
@@ -12,8 +11,7 @@ try {
             INNER JOIN ingresso i ON v.ingresso_id = i.id
             INNER JOIN evento e ON i.evento_id = e.id
             GROUP BY e.id, e.nome
-            ORDER BY total_receita DESC"; // Ordenar do maior para o menor fica mais bonito
-            
+            ORDER BY total_receita DESC"; // Ordenar do maior para o menor 
     $stmt = $pdo->query($sql);
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -49,7 +47,11 @@ try {
                     </div>
                 </div>
                 
-                <div class="card-footer bg-white border-0 text-center pb-4">
+                <div class="card-footer bg-white border-0  pb-4">
+                    <a href="principal.php" class="btn btn-outline-secondary rounded-pill px-4 me-2">
+                        <i class="bi bi-arrow-left"></i> Voltar
+                    </a>
+
                     <a href="relatorio.php" class="btn btn-outline-dark rounded-pill px-4">
                         <i class="bi bi-table"></i> Ver Tabela de Dados
                     </a>
@@ -65,7 +67,7 @@ try {
 <script>
     const ctx = document.getElementById('meuGrafico').getContext('2d');
 
-    // Cria um Gradiente bonito (Roxo para Azul)
+    // Cria um Gradiente
     let gradient = ctx.createLinearGradient(0, 0, 0, 400);
     gradient.addColorStop(0, 'rgba(54, 162, 235, 0.8)'); // Azul topo
     gradient.addColorStop(1, 'rgba(153, 102, 255, 0.8)'); // Roxo base
@@ -78,9 +80,9 @@ try {
                 label: 'Faturamento',
                 data: <?php echo json_encode($valores); ?>,
                 backgroundColor: gradient, // Usa o gradiente criado acima
-                borderRadius: 8, // Barras arredondadas (fica muito mais moderno)
+                borderRadius: 8, // Barras arredondadas 
                 borderWidth: 0,
-                barPercentage: 0.6, // Largura da barra (para não ficar muito gorda)
+                barPercentage: 0.6, // Largura da barra 
                 // Dados extras para usar no tooltip (quantidades)
                 extraData: <?php echo json_encode($quantidades); ?> 
             }]
@@ -90,7 +92,7 @@ try {
             maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    display: false // Esconde a legenda (pois só tem uma cor)
+                    display: false // Esconde a legenda 
                 },
                 tooltip: {
                     backgroundColor: 'rgba(0, 0, 0, 0.8)',

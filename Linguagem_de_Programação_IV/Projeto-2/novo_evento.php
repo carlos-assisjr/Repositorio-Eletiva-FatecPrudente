@@ -53,5 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <textarea name="descricao" class="form-control"></textarea>
     </div>
     <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="eventos.php" class="btn btn-secondary">Cancelar</a>
 </form>
 <?php require("rodape.php"); ?>

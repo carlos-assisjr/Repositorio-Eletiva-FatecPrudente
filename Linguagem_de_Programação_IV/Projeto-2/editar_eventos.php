@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     try {
         $stmt = $pdo->prepare("UPDATE evento SET nome = ?, local = ?, data_evento = ?, descricao = ?, categoria = ? WHERE id = ?");
 
-        if ($stmt->execute([$nome, $local, $data_evento, $descricao,$categoria, $id])) {
+        if ($stmt->execute([$nome, $local, $data_evento, $descricao, $categoria, $id])) {
             header('location: eventos.php?editar=true');
         } else {
             header('location: eventos.php?editar=false');
@@ -64,18 +64,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <input type="text" name="local" class="form-control" required value="<?= $evento['local'] ?>">
                 </div>
             </div>
-
             <div class="mb-3">
-                <label class="form-label fw-bold">Tipo</label>
+                <label class="form-label fw-bold">Categoria do Evento</label>
                 <select name="categoria" class="form-select" required>
-                    <option value="Show" <?= ($evento['categoria'] == 'Show') ? 'selected' : '' ?>>🎸 Show</option>
-                    <option value="Teatro" <?= ($evento['categoria'] == 'Teatro') ? 'selected' : '' ?>>🎭 Teatro</option>
-                    <option value="Filme" <?= ($evento['categoria'] == 'Filme') ? 'selected' : '' ?>>🎬 Filme</option>
-                    <option value="Palestra" <?= ($evento['categoria'] == 'Palestra') ? 'selected' : '' ?>>🎤 Palestra</option>
-                    <option value="Esporte" <?= ($evento['categoria'] == 'Esporte') ? 'selected' : '' ?>>⚽ Esporte</option>
+                    <?php
+                    $categorias = ["🎸Show", "🎬Filme", "🎭Teatro", "🎤Palestra", "⚽Esporte"];
+                    foreach ($categorias as $cat):
+                    ?>
+                        <option value="<?= $cat ?>" <?= ($evento['categoria'] == $cat) ? 'selected' : '' ?>>
+                            <?= $cat ?>
+                        </option>
+                    <?php endforeach; ?>
                 </select>
             </div>
-
             <div class="mb-3">
                 <label for="descricao" class="form-label">Descrição</label>
                 <textarea name="descricao" class="form-control" rows="3"><?= $evento['descricao'] ?></textarea>

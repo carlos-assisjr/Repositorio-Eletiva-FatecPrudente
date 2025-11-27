@@ -41,6 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <input type="number" name="quant" class="form-control" required>
         </div>
     </div>
-    <button type="submit" class="btn btn-success">Salvar</button>
+    <button type="submit" class="btn btn-success px-4">Salvar</button>
+    <a href="ingresso.php" class="btn btn-secondary px-4">Cancelar</a>
+
 </form>
 <?php require("rodape.php"); ?>
